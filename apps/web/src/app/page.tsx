@@ -1,0 +1,19 @@
+import { User } from "@/types/user";
+
+export default async function HomePage() {
+  const response = await fetch("http://localhost:8000/api/v1/users");
+  const users = await response.json();
+  console.log(users);
+  return (
+    <section>
+      {users.data.map((user: User) => {
+        return (
+          <div key={user.id}>
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+          </div>
+        );
+      })}
+    </section>
+  );
+}
