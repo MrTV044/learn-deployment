@@ -24,6 +24,9 @@ app.get("/api/v1/users", async (req, res) => {
 
 app.post("/api/v1/users", async (req, res) => {
   try {
+    console.log(process.env.SUPABASE_DIRECT_URL);
+    console.log(process.env.SUPABASE_DATABASE_URL);
+
     const { name, email } = req.body;
 
     await prisma.user.create({
